@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import fb from '../firebase'
+import WorkoutForm from '../components/workoutForm'
 
 class ProfileContainer extends Component {
   constructor(props) {
@@ -27,18 +28,25 @@ class ProfileContainer extends Component {
       .push(this.inputEl.value)
     this.inputEl.value = '' // <- clear the input
   }
+
+  formatWorkoutData = exercises => {
+    return {
+      date: Date.now(),
+      exercises,
+    }
+  }
+
   render() {
     return (
-      <form onSubmit={this.addWorkout}>
-        <label>Workout</label>
-        <input type="text" id="exercises" ref={el => (this.inputEl = el)} />
-        <input type="submit" />
+      <div>
+        <WorkoutForm />
+        <h3>Past Workouts</h3>
         <ol>
           {this.state.workouts.map(workout => (
             <li key={workout.id}>{workout.text}</li>
           ))}
         </ol>
-      </form>
+      </div>
     )
   }
 }
