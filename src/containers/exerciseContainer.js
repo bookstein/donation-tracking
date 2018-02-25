@@ -17,26 +17,10 @@ class ExerciseContainer extends Component {
       let exercise = { text: snapshot.val(), id: snapshot.key }
       this.setState({ exercises: [exercise].concat(this.state.exercises) })
     })
-    // let exercisesRef = fb
-    //   .database()
-    //   .ref('exercises')
-    //   .orderByKey()
-    //   .limitToLast(100)
-    // exercisesRef.on('child_added', snapshot => {
-    //   let exercise = { text: snapshot.val(), id: snapshot.key }
-    //   this.setState({ exercises: [exercise].concat(this.state.exercises) })
-    // })
   }
 
   submitExercise = data => {
-    console.log('exercise submitted', data)
     pushToDatabase('exercises', data)
-    // const myRef = fb
-    //   .database()
-    //   .ref('exercises')
-    //   .push()
-    // myRef.set(data)
-    // console.log(myRef.toString())
   }
 
   render() {

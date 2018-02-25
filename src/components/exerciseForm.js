@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import '../assets/exerciseForm.css'
 
+const INITIAL_STATE = {
+  exerciseName: '',
+  exerciseTag: '',
+}
+
 export default class ExerciseForm extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      exerciseName: null,
-      exerciseTag: null,
-    }
+    this.state = INITIAL_STATE
   }
   static propTypes = {
     submitExercise: PropTypes.func.isRequired,
@@ -18,6 +20,7 @@ export default class ExerciseForm extends Component {
     e.preventDefault() // don't forget this!
     const data = this.state
     this.props.submitExercise(data)
+    this.setState(INITIAL_STATE)
   }
 
   handleChange = evt => {
@@ -38,6 +41,7 @@ export default class ExerciseForm extends Component {
           <label>Exercise Name</label>
           <input
             type="text"
+            value={this.state.exerciseName}
             name="exerciseName"
             className="ExerciseForm__Input"
             onChange={this.handleChange}
@@ -47,6 +51,7 @@ export default class ExerciseForm extends Component {
           <label>Exercise Tag</label>
           <input
             type="text"
+            value={this.state.exerciseTag}
             name="exerciseTag"
             className="ExerciseForm__Input"
             onChange={this.handleChange}

@@ -5,7 +5,6 @@ import '../assets/exercise.css'
 class Exercise extends Component {
   render() {
     const { exerciseName, exerciseTag } = this.props
-    console.log('props', exerciseName, exerciseTag)
     return (
       <div className="Exercise">
         <h1>{exerciseName}</h1>
