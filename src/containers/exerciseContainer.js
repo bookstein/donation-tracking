@@ -6,6 +6,24 @@ import ExerciseForm from '../components/exerciseForm'
 import fb from '../firebase'
 
 class ExerciseContainer extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      exercises: [],
+    }
+  }
+  componentDidMount() {
+    let exercisesRef = fb
+      .database()
+      .ref('exercises')
+      .orderByKey()
+      .limitToLast(100)
+    exercisesRef.on('child_added', snapshot => {
+      let exercise = { text: snapshot.val(), id: snapshot.key }
+      this.setState({ exercises: [exercise].concat(this.state.exercises) })
+    })
+  }
+
   submitExercise = data => {
     console.log('exercise submitted', data)
     const myRef = fb
@@ -17,9 +35,21 @@ class ExerciseContainer extends Component {
   }
 
   render() {
+    const exercises = this.state.exercises
     return (
       <div>
-        <Exercise />
+        {exercises.length > 0 &&
+          this.state.exercises.map((ex, i) => {
+            const exName = ex.text.exerciseName
+            const exTag = ex.text.exerciseTag
+            return (
+              <Exercise
+                key={`${exName}${exTag}${i}`}
+                exerciseName={exName}
+                exerciseTag={exTag}
+              />
+            )
+          })}
         <ExerciseForm submitExercise={this.submitExercise} />
       </div>
     )
