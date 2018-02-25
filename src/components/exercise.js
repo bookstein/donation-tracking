@@ -4,14 +4,14 @@ import '../assets/exercise.css'
 
 class Exercise extends Component {
   render() {
+    const { exerciseName, exerciseTag } = this.props
+    console.log('props', exerciseName, exerciseTag)
     return (
       <div className="Exercise">
-        <h1>Deadlifts</h1>
+        <h1>{exerciseName}</h1>
         <p className="Exercise__Tags">
           Tags:
-          <span className="Exercise__Tag">
-            <a>back</a>
-          </span>
+          <span className="Exercise__Tag">{exerciseTag}</span>
         </p>
         <div className="Exercise__Completions">
           <h3>Recent completions:</h3>
