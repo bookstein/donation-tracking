@@ -8,5 +8,7 @@ var config = {
   storageBucket: 'workout-ddb81.appspot.com',
   messagingSenderId: '718114166773',
 }
+
+// Initializes firebase app
 var fb = firebase.initializeApp(config)
 export default fb
