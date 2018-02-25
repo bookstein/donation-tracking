@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import './App.css'
 import ProfileContainer from './containers/profileContainer'
+import ExerciseContainer from './containers/exerciseContainer'
 
 class App extends Component {
   render() {
-    return <ProfileContainer />
+    return <ExerciseContainer />
   }
 }
 

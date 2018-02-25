@@ -2,8 +2,27 @@
 
 It'll all workout.
 
-Project Console: https://console.firebase.google.com/project/workout-ddb81/overview
-Hosting URL: https://workout-ddb81.firebaseapp.com
+* Project Console: https://console.firebase.google.com/project/workout-ddb81/overview
+* Hosting URL: https://workout-ddb81.firebaseapp.com
+
+## Development
+1. clone the repo
+1. `nvm use 6`
+1. `yarn`
+1. `npm start` opens localhost:3000 in the browser
+
+
+## Deployment
+
+This project is deployed using the Firebase CLI.
+```
+firebase login
+yarn run build
+firebase deploy
+```
+
+More instructions on Firebase CLI [here](https://firebase.google.com/docs/cli/?authuser=0).
+
 
 ---
 

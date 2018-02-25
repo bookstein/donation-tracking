@@ -39,7 +39,7 @@ class ProfileContainer extends Component {
   render() {
     return (
       <div>
-        <WorkoutForm />
+        <WorkoutForm addWorkout={this.addWorkout} />
         <h3>Past Workouts</h3>
         <ol>
           {this.state.workouts.map(workout => (

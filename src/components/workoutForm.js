@@ -1,6 +1,17 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 export default class WorkoutForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      exercises: [],
+    }
+  }
+  static propTypes = {
+    addWorkout: PropTypes.func.isRequired,
+  }
+
   render() {
     return (
       <form onSubmit={this.addWorkout}>
