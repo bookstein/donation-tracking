@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Exercise from '../components/exercise'
 import ExerciseForm from '../components/exerciseForm'
-import fb from '../firebase'
+import { listenForUpdates, pushToDatabase } from '../firebaseService'
 
 class ExerciseContainer extends Component {
   constructor(props) {
@@ -13,25 +13,30 @@ class ExerciseContainer extends Component {
     }
   }
   componentDidMount() {
-    let exercisesRef = fb
-      .database()
-      .ref('exercises')
-      .orderByKey()
-      .limitToLast(100)
-    exercisesRef.on('child_added', snapshot => {
+    listenForUpdates('exercises', snapshot => {
       let exercise = { text: snapshot.val(), id: snapshot.key }
       this.setState({ exercises: [exercise].concat(this.state.exercises) })
     })
+    // let exercisesRef = fb
+    //   .database()
+    //   .ref('exercises')
+    //   .orderByKey()
+    //   .limitToLast(100)
+    // exercisesRef.on('child_added', snapshot => {
+    //   let exercise = { text: snapshot.val(), id: snapshot.key }
+    //   this.setState({ exercises: [exercise].concat(this.state.exercises) })
+    // })
   }
 
   submitExercise = data => {
     console.log('exercise submitted', data)
-    const myRef = fb
-      .database()
-      .ref('exercises')
-      .push()
-    myRef.set(data)
-    console.log(myRef.toString())
+    pushToDatabase('exercises', data)
+    // const myRef = fb
+    //   .database()
+    //   .ref('exercises')
+    //   .push()
+    // myRef.set(data)
+    // console.log(myRef.toString())
   }
 
   render() {
