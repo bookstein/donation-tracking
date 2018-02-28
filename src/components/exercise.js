@@ -3,6 +3,13 @@ import PropTypes from 'prop-types'
 import '../assets/exercise.css'
 
 class Exercise extends Component {
+  static propTypes = {
+    removalKey: PropTypes.string.isRequired,
+    exerciseTag: PropTypes.string.isRequired,
+    exerciseName: PropTypes.string.isRequired,
+    removeExercise: PropTypes.func.isRequired,
+  }
+
   handleRemoveExercise = () => {
     const k = this.props.removalKey
     this.props.removeExercise(k)

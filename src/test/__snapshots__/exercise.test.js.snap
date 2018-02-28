@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div
+  className="Exercise"
+>
+  <div>
+    <h1>
+      testName
+    </h1>
+    <p
+      className="Exercise__Tags"
+    >
+      Tags:
+      <span
+        className="Exercise__Tag"
+      >
+        testTag
+      </span>
+    </p>
+    <div
+      className="Exercise__Completions"
+    >
+      <h3>
+        Recent completions:
+      </h3>
+      <p>
+        195 lbs 5 reps
+      </p>
+      <p>
+        185 lbs 5 reps
+      </p>
+      <p>
+        185 lbs 5 reps
+      </p>
+    </div>
+  </div>
+  <div
+    className="Exercise__X"
+    onClick={[Function]}
+  >
+    X
+  </div>
+</div>
+`;

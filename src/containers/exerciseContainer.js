@@ -26,7 +26,7 @@ class ExerciseContainer extends Component {
     // if snapshot is from a removed child
     if (this.state.exercises.filter(e => e.id === key).length > 0) {
       const exercises = this.state.exercises.filter(e => e.id !== key)
-      debugger
+      debugger // FIXME: WTF!!!! Deleting exercises results in them appearing double!!!!!
       this.setState({ exercises })
     }
     // else, add new child
