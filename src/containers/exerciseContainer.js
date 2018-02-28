@@ -3,7 +3,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Exercise from '../components/exercise'
 import ExerciseForm from '../components/exerciseForm'
-import { listenForUpdates, pushToDatabase } from '../firebaseService'
+import {
+  pushToDatabase,
+  removeFromDatabase,
+  listenForUpdates,
+} from '../firebaseService'
 
 class ExerciseContainer extends Component {
   constructor(props) {
@@ -12,15 +16,31 @@ class ExerciseContainer extends Component {
       exercises: [],
     }
   }
+
   componentDidMount() {
-    listenForUpdates('exercises', snapshot => {
-      let exercise = { text: snapshot.val(), id: snapshot.key }
-      this.setState({ exercises: [exercise].concat(this.state.exercises) })
-    })
+    listenForUpdates('exercises', this.buildExerciseList)
+  }
+
+  buildExerciseList = snapshot => {
+    const key = snapshot.key
+    // if snapshot is from a removed child
+    if (this.state.exercises.filter(e => e.id === key).length > 0) {
+      const exercises = this.state.exercises.filter(e => e.id !== key)
+      debugger
+      this.setState({ exercises })
+    }
+    // else, add new child
+    const exercise = { text: snapshot.val(), id: snapshot.key }
+    this.setState({ exercises: [exercise].concat(this.state.exercises) })
   }
 
   submitExercise = data => {
     pushToDatabase('exercises', data)
+  }
+
+  removeExercise = key => {
+    console.log('key!!!!', key)
+    removeFromDatabase('exercises', key)
   }
 
   render() {
@@ -33,7 +53,9 @@ class ExerciseContainer extends Component {
             const exTag = ex.text.exerciseTag
             return (
               <Exercise
-                key={`${exName}${exTag}${i}`}
+                key={ex.id}
+                removalKey={ex.id}
+                removeExercise={this.removeExercise}
                 exerciseName={exName}
                 exerciseTag={exTag}
               />

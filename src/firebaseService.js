@@ -5,9 +5,9 @@ export const listenForUpdates = (refName, cb) => {
     .database()
     .ref(refName)
     .orderByKey()
-    .limitToLast(100)
 
   myRef.on('child_added', cb)
+  myRef.on('child_removed', cb)
 }
 
 export const pushToDatabase = (refName, data) => {
@@ -19,4 +19,17 @@ export const pushToDatabase = (refName, data) => {
   // for some reason I can only use `set`
   // `push` seems to append to the last item in the collection
   console.log('view your new data at ', myRef.toString())
+}
+
+export const removeFromDatabase = (refName, key) => {
+  const myRef = fb.database().ref(refName)
+  myRef
+    .child(key)
+    .remove()
+    .then(function() {
+      console.log('Remove succeeded.')
+    })
+    .catch(function(error) {
+      console.log('Remove failed: ' + error.message)
+    })
 }

@@ -3,6 +3,8 @@
   background-color: #d2d2d2;
   padding: 10px;
   margin: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .Exercise__Tags {
@@ -18,4 +20,8 @@
 
 .Exercise__Tag:hover {
   cursor: pointer;
+}
+
+.Exercise__X {
+  color: red;
 }
