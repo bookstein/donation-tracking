@@ -23,15 +23,15 @@ class ExerciseContainer extends Component {
 
   buildExerciseList = snapshot => {
     const key = snapshot.key
-    // if snapshot is from a removed child
+    // if snapshot is from a removed child, don't add the snapshot to state
     if (this.state.exercises.filter(e => e.id === key).length > 0) {
       const exercises = this.state.exercises.filter(e => e.id !== key)
-      debugger // FIXME: WTF!!!! Deleting exercises results in them appearing double!!!!!
       this.setState({ exercises })
+    } else {
+      // otherwise, add new child
+      const exercise = { text: snapshot.val(), id: snapshot.key }
+      this.setState({ exercises: [exercise].concat(this.state.exercises) })
     }
-    // else, add new child
-    const exercise = { text: snapshot.val(), id: snapshot.key }
-    this.setState({ exercises: [exercise].concat(this.state.exercises) })
   }
 
   submitExercise = data => {
@@ -39,7 +39,6 @@ class ExerciseContainer extends Component {
   }
 
   removeExercise = key => {
-    console.log('key!!!!', key)
     removeFromDatabase('exercises', key)
   }
 
