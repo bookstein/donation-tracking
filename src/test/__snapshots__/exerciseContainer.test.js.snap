@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the happy path 1`] = `
+<div>
+  <form
+    className="ExerciseForm"
+    onSubmit={[Function]}
+  >
+    <h3>
+      New Exercise
+    </h3>
+    <div
+      className="ExerciseForm__FormGroup"
+    >
+      <label>
+        Exercise Name
+      </label>
+      <input
+        className="ExerciseForm__Input"
+        name="exerciseName"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="ExerciseForm__FormGroup"
+    >
+      <label>
+        Exercise Tag
+      </label>
+      <input
+        className="ExerciseForm__Input"
+        name="exerciseTag"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <input
+      className="ExerciseForm__Submit"
+      type="submit"
+    />
+  </form>
+</div>
+`;
