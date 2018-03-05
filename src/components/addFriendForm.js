@@ -42,7 +42,7 @@ export default class AddFriendForm extends Component {
             <label>Name</label>
             <input
               type="text"
-              value={this.state.exerciseName}
+              value={this.state.friendName}
               name="friendName"
               className="AddFriendForm__Input"
               onChange={this.handleChange}
@@ -52,7 +52,7 @@ export default class AddFriendForm extends Component {
             <label>Passionate about:</label>
             <input
               type="text"
-              value={this.state.exerciseTag}
+              value={this.state.friendTag}
               name="friendTag"
               className="AddFriendForm__Input"
               onChange={this.handleChange}
