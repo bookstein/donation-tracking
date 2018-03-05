@@ -85,11 +85,9 @@ EDGE CASES
   what are our container's edges?
     1. calls to external services (Firebase)
       - call fails
-      - call returns no data
-
 */
 
-  it('sets error state if Firebase fails', done => {
+  it('sets error state if Firebase returns error', done => {
     firebaseService.pushToDatabase.mockImplementationOnce(() =>
       Promise.reject('you got an error!'),
     )

@@ -49,9 +49,6 @@ class FriendsContainer extends Component {
 
   render() {
     const friends = this.state.friends
-    if (this.state.error) {
-      return <div className="FriendsContainer--error">Error!</div>
-    }
     return (
       <div className="FriendsContainer">
         <div className="LeftColumn">
@@ -65,6 +62,11 @@ class FriendsContainer extends Component {
         </div>
         <div className="RightColumn">
           <h2>Ask Friends to Donate</h2>
+          {this.state.error && (
+            <div className="FriendsContainer--error">
+              An error occurred. Please try again.
+            </div>
+          )}
           {friends.length > 0 &&
             this.state.friends.map((f, i) => {
               const friendName = f.text.friendName
