@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the happy path 1`] = `
+exports[`FriendsContainer renders the happy path 1`] = `
 <div
   className="FriendsContainer"
 >
@@ -33,7 +33,7 @@ exports[`renders the happy path 1`] = `
             name="friendName"
             onChange={[Function]}
             type="text"
-            value={undefined}
+            value=""
           />
         </div>
         <div
@@ -47,7 +47,7 @@ exports[`renders the happy path 1`] = `
             name="friendTag"
             onChange={[Function]}
             type="text"
-            value={undefined}
+            value=""
           />
         </div>
         <input
@@ -63,6 +63,9 @@ exports[`renders the happy path 1`] = `
     <h2>
       Ask Friends to Donate
     </h2>
+    <div>
+      Friend
+    </div>
   </div>
 </div>
 `;

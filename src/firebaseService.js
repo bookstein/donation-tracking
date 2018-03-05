@@ -15,21 +15,18 @@ export const pushToDatabase = (refName, data) => {
     .database()
     .ref(refName)
     .push()
-  myRef.set(data)
   // for some reason I can only use `set`
   // `push` seems to append to the last item in the collection
   console.log('view your new data at ', myRef.toString())
+  return myRef.set(data)
 }
 
 export const removeFromDatabase = (refName, key) => {
   const myRef = fb.database().ref(refName)
-  myRef
+  return myRef
     .child(key)
     .remove()
     .then(function() {
       console.log('Remove succeeded.')
-    })
-    .catch(function(error) {
-      console.log('Remove failed: ' + error.message)
     })
 }

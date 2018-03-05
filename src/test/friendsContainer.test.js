@@ -32,48 +32,55 @@ const SNAPSHOT_AS_STATE = {
   text: { exerciseName: 'myCoolExercise', exerciseTag: 'legs' },
 }
 
-/*
+describe('FriendsContainer', () => {
+  beforeEach(() => {
+    // FIXME: mock needs to match the behavior of the original
+    // listenForUpdates('friends', this.buildExerciseList) -> must pass a fake snapshot into cb
+    firebaseService.listenForUpdates.mockImplementation((_, cb) =>
+      cb(SNAPSHOT_FROM_FIREBASE),
+    )
+    firebaseService.pushToDatabase.mockImplementation(() =>
+      Promise.resolve('Success'),
+    )
+  })
+  afterEach(() => {
+    firebaseService.listenForUpdates.mockReset()
+    firebaseService.pushToDatabase.mockReset()
+  })
+  /*
 HAPPY PATH:
   component renders as we expect
 */
-it('renders the happy path', () => {
-  const component = renderer.create(<FriendsContainer />)
-  let tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  it('renders the happy path', () => {
+    const component = renderer.create(<FriendsContainer />)
+    let tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+  })
 
-/*
+  /*
 BEHAVIOR:
   what behavior does the container itself have?
     1. submitting forms
     2. loading data
 */
-it('sets state with initial list of friends', done => {
-  // NOTE: mock needs to match the behavior of the original
-  // listenForUpdates('friends', this.buildExerciseList) -> must pass a fake snapshot into cb
-  firebaseService.listenForUpdates.mockImplementation((_, cb) =>
-    cb(SNAPSHOT_FROM_FIREBASE),
-  )
-  const wrapper = mount(<FriendsContainer />)
-  wrapper.update()
-  setImmediate(() => {
-    const friends = wrapper.state('friends')
-    expect(friends).toHaveLength(1)
-    expect(friends[0]).toMatchObject(SNAPSHOT_AS_STATE)
+  it('sets state with initial list of friends', done => {
+    const wrapper = mount(<FriendsContainer />)
+    wrapper.update()
+    setImmediate(() => {
+      const friends = wrapper.state('friends')
+      expect(friends).toHaveLength(1)
+      expect(friends[0]).toMatchObject(SNAPSHOT_AS_STATE)
+    })
+    done()
   })
-  done()
-})
-it('sends new friends to Firebase on form submit', () => {
-  // note: this is not really a unit test, more integration test
-  firebaseService.listenForUpdates.mockImplementation((_, cb) =>
-    cb(SNAPSHOT_FROM_FIREBASE),
-  )
-  const wrapper = mount(<FriendsContainer />)
-  wrapper.find('.AddFriendForm__Submit').simulate('submit')
-  expect(firebaseService.pushToDatabase.mock.calls).toHaveLength(1)
-})
+  it('sends new friends to Firebase on form submit', () => {
+    // note: this is not really a unit test, more integration test
+    const wrapper = mount(<FriendsContainer />)
+    wrapper.find('.AddFriendForm__Submit').simulate('submit')
+    expect(firebaseService.pushToDatabase.mock.calls).toHaveLength(1)
+  })
 
-/*
+  /*
 EDGE CASES
   what are our container's edges?
     1. calls to external services (Firebase)
@@ -82,7 +89,16 @@ EDGE CASES
 
 */
 
-it('renders an error message if Firebase fails', done => {
-  // TODO: find out what errors from Firebase realistically look like
-  done()
+  it('sets error state if Firebase fails', done => {
+    firebaseService.pushToDatabase.mockImplementationOnce(() =>
+      Promise.reject('you got an error!'),
+    )
+    const wrapper = mount(<FriendsContainer />)
+    wrapper.find('.AddFriendForm__Submit').simulate('submit')
+    wrapper.update()
+    setImmediate(() => {
+      expect(wrapper.state('error')).toBe(true)
+      done()
+    })
+  })
 })

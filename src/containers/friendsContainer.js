@@ -1,6 +1,5 @@
 // this file will make the call to the server for all the friends
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import Friend from '../components/friend'
 import {
   pushToDatabase,
@@ -15,6 +14,7 @@ class FriendsContainer extends Component {
     super(props)
     this.state = {
       friends: [],
+      error: false,
     }
   }
 
@@ -36,16 +36,22 @@ class FriendsContainer extends Component {
   }
 
   submitFriend = data => {
-    pushToDatabase('friends', data)
+    pushToDatabase('friends', data).catch(e => this.handleError(e))
   }
 
   removeFriend = key => {
-    console.log('remove')
-    removeFromDatabase('friends', key)
+    removeFromDatabase('friends', key).catch(e => this.handleError(e))
+  }
+
+  handleError = e => {
+    this.setState({ error: true })
   }
 
   render() {
     const friends = this.state.friends
+    if (this.state.error) {
+      return <div className="FriendsContainer--error">Error!</div>
+    }
     return (
       <div className="FriendsContainer">
         <div className="LeftColumn">
