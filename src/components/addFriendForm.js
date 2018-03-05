@@ -35,30 +35,32 @@ export default class AddFriendForm extends Component {
 
   render() {
     return (
-      <form className="AddFriendForm" onSubmit={this.submitChange}>
-        <h3>Add New Friend</h3>
-        <div className="AddFriendForm__FormGroup">
-          <label>Name</label>
-          <input
-            type="text"
-            value={this.state.exerciseName}
-            name="friendName"
-            className="AddFriendForm__Input"
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="AddFriendForm__FormGroup">
-          <label>Passionate about:</label>
-          <input
-            type="text"
-            value={this.state.exerciseTag}
-            name="friendTag"
-            className="AddFriendForm__Input"
-            onChange={this.handleChange}
-          />
-        </div>
-        <input className="AddFriendForm__Submit" type="submit" />
-      </form>
+      <div className="AddFriendForm">
+        <form onSubmit={this.submitChange}>
+          <h3>Add New Friend</h3>
+          <div className="AddFriendForm__FormGroup">
+            <label>Name</label>
+            <input
+              type="text"
+              value={this.state.exerciseName}
+              name="friendName"
+              className="AddFriendForm__Input"
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="AddFriendForm__FormGroup">
+            <label>Passionate about:</label>
+            <input
+              type="text"
+              value={this.state.exerciseTag}
+              name="friendTag"
+              className="AddFriendForm__Input"
+              onChange={this.handleChange}
+            />
+          </div>
+          <input className="AddFriendForm__Submit" type="submit" />
+        </form>
+      </div>
     )
   }
 }

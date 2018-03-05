@@ -4,16 +4,20 @@ body {
   font-family: sans-serif;
 }
 
-.App {
+.FriendsContainer {
   display: flex;
   justify-content: flex-start;
   padding: 40px;
 }
 
-.Fundraising {
-  flex-grow: 4;
+.RightColumn {
+  flex-grow: 6;
 }
 
-.Logo {
+.LeftColumn {
+  border: 1px solid #555555;
+  padding: 10px;
   margin-right: 20px;
+  display: flex;
+  justify-content: space-between;
 }

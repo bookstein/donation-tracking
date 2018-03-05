@@ -2,12 +2,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Friend from '../components/friend'
-import AddFriendForm from '../components/addFriendForm'
 import {
   pushToDatabase,
   removeFromDatabase,
   listenForUpdates,
 } from '../firebaseService'
+import logo from '../assets/sjf.png'
+import AddFriendForm from '../components/addFriendForm'
 
 class FriendsContainer extends Component {
   constructor(props) {
@@ -39,29 +40,40 @@ class FriendsContainer extends Component {
   }
 
   removeFriend = key => {
+    console.log('remove')
     removeFromDatabase('friends', key)
   }
 
   render() {
     const friends = this.state.friends
     return (
-      <div classNames="FriendsContainer">
-        <h2>Ask Friends to Donate</h2>
-        {friends.length > 0 &&
-          this.state.friends.map((f, i) => {
-            const friendName = f.text.friendName
-            const friendTag = f.text.friendTag
-            return (
-              <Friend
-                key={f.id}
-                removalKey={f.id}
-                removeFriend={this.removeFriend}
-                friendName={friendName}
-                friendTag={friendTag}
-              />
-            )
-          })}
-        <AddFriendForm submitFriend={this.submitFriend} />
+      <div className="FriendsContainer">
+        <div className="LeftColumn">
+          <img
+            src={logo}
+            alt="socialjusticefund.org"
+            width="214"
+            height="270"
+          />
+          <AddFriendForm submitFriend={this.submitFriend} />
+        </div>
+        <div className="RightColumn">
+          <h2>Ask Friends to Donate</h2>
+          {friends.length > 0 &&
+            this.state.friends.map((f, i) => {
+              const friendName = f.text.friendName
+              const friendTag = f.text.friendTag
+              return (
+                <Friend
+                  key={f.id}
+                  removalKey={f.id}
+                  removeFriend={this.removeFriend}
+                  friendName={friendName}
+                  friendTag={friendTag}
+                />
+              )
+            })}
+        </div>
       </div>
     )
   }
