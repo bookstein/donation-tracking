@@ -3,3 +3,17 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.App {
+  display: flex;
+  justify-content: flex-start;
+  padding: 40px;
+}
+
+.Fundraising {
+  flex-grow: 4;
+}
+
+.Logo {
+  margin-right: 20px;
+}

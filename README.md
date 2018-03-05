@@ -1,6 +1,6 @@
-# Workout
+# Fundraise Time
 
-It'll all workout.
+App for tracking fundraising in my community for cool social justice shit.
 
 * Project Console: https://console.firebase.google.com/project/workout-ddb81/overview
 * Hosting URL: https://workout-ddb81.firebaseapp.com

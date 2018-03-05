@@ -1,15 +1,14 @@
-.ExerciseForm {
+.AddFriendForm {
   border: 1px solid #555555;
   background-color: #d2d2d2;
   padding: 10px;
-  margin: 20px;
 }
 
-.ExerciseForm__FormGroup {
+.AddFriendForm__FormGroup {
   display: flex;
   margin: 10px;
 }
 
-.ExerciseForm__Input {
+.AddFriendForm__Input {
   margin-left: 10px;
 }

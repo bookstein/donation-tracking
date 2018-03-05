@@ -1,27 +1,27 @@
-.Exercise {
+.Friend {
   border: 1px solid #555555;
   background-color: #d2d2d2;
   padding: 10px;
-  margin: 20px;
+  margin: 20px 0;
   display: flex;
   justify-content: space-between;
 }
 
-.Exercise__Tags {
+.Friend__Tags {
   font-size: 11px;
   font-style: italic;
 }
 
-.Exercise__Tag {
+.Friend__Tag {
   padding-left: 5px;
   text-decoration: underline;
   color: blue;
 }
 
-.Exercise__Tag:hover {
+.Friend__Tag:hover {
   cursor: pointer;
 }
 
-.Exercise__X {
+.Friend__X {
   color: red;
 }

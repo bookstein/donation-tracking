@@ -1,25 +1,25 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import '../assets/exerciseForm.css'
+import '../assets/addFriendForm.css'
 
 const INITIAL_STATE = {
-  exerciseName: '',
-  exerciseTag: '',
+  friendName: '',
+  friendTag: '',
 }
 
-export default class ExerciseForm extends Component {
+export default class AddFriendForm extends Component {
   constructor(props) {
     super(props)
     this.state = INITIAL_STATE
   }
   static propTypes = {
-    submitExercise: PropTypes.func.isRequired,
+    submitFriend: PropTypes.func.isRequired,
   }
 
   submitChange = e => {
     e.preventDefault() // don't forget this!
     const data = this.state
-    this.props.submitExercise(data)
+    this.props.submitFriend(data)
     this.setState(INITIAL_STATE)
   }
 
@@ -35,29 +35,29 @@ export default class ExerciseForm extends Component {
 
   render() {
     return (
-      <form className="ExerciseForm" onSubmit={this.submitChange}>
-        <h3>New Exercise</h3>
-        <div className="ExerciseForm__FormGroup">
-          <label>Exercise Name</label>
+      <form className="AddFriendForm" onSubmit={this.submitChange}>
+        <h3>Add New Friend</h3>
+        <div className="AddFriendForm__FormGroup">
+          <label>Name</label>
           <input
             type="text"
             value={this.state.exerciseName}
-            name="exerciseName"
-            className="ExerciseForm__Input"
+            name="friendName"
+            className="AddFriendForm__Input"
             onChange={this.handleChange}
           />
         </div>
-        <div className="ExerciseForm__FormGroup">
-          <label>Exercise Tag</label>
+        <div className="AddFriendForm__FormGroup">
+          <label>Passionate about:</label>
           <input
             type="text"
             value={this.state.exerciseTag}
-            name="exerciseTag"
-            className="ExerciseForm__Input"
+            name="friendTag"
+            className="AddFriendForm__Input"
             onChange={this.handleChange}
           />
         </div>
-        <input className="ExerciseForm__Submit" type="submit" />
+        <input className="AddFriendForm__Submit" type="submit" />
       </form>
     )
   }

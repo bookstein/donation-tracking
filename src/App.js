@@ -1,10 +1,19 @@
 import React, { Component } from 'react'
-import ProfileContainer from './containers/profileContainer'
-import ExerciseContainer from './containers/exerciseContainer'
+import FriendsContainer from './containers/friendsContainer'
+import logo from './assets/sjf.png'
 
 class App extends Component {
   render() {
-    return <ExerciseContainer />
+    return (
+      <div className="App">
+        <div className="Logo">
+          <img src={logo} alt="socialjusticefund.org" />
+        </div>
+        <div className="Fundraising">
+          <FriendsContainer />
+        </div>
+      </div>
+    )
   }
 }
 

@@ -65,7 +65,7 @@ it('sends new exercises to Firebase on form submit', () => {
     cb(SNAPSHOT_FROM_FIREBASE),
   )
   const wrapper = mount(<ExerciseContainer />)
-  wrapper.find('.ExerciseForm__Submit').simulate('submit')
+  wrapper.find('.AddFriendForm__submit').simulate('submit')
   expect(firebaseService.pushToDatabase.mock.calls).toHaveLength(1)
 })
 
