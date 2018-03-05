@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the happy path 1`] = `
+<div
+  className="FriendsContainer"
+>
+  <div
+    className="LeftColumn"
+  >
+    <img
+      alt="socialjusticefund.org"
+      height="270"
+      src="sjf.png"
+      width="214"
+    />
+    <div
+      className="AddFriendForm"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <h3>
+          Add New Friend
+        </h3>
+        <div
+          className="AddFriendForm__FormGroup"
+        >
+          <label>
+            Name
+          </label>
+          <input
+            className="AddFriendForm__Input"
+            name="friendName"
+            onChange={[Function]}
+            type="text"
+            value={undefined}
+          />
+        </div>
+        <div
+          className="AddFriendForm__FormGroup"
+        >
+          <label>
+            Passionate about:
+          </label>
+          <input
+            className="AddFriendForm__Input"
+            name="friendTag"
+            onChange={[Function]}
+            type="text"
+            value={undefined}
+          />
+        </div>
+        <input
+          className="AddFriendForm__Submit"
+          type="submit"
+        />
+      </form>
+    </div>
+  </div>
+  <div
+    className="RightColumn"
+  >
+    <h2>
+      Ask Friends to Donate
+    </h2>
+  </div>
+</div>
+`;

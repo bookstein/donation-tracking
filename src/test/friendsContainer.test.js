@@ -1,19 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from '../App'
-import ExerciseContainer from '../containers/exerciseContainer'
+import FriendsContainer from '../containers/friendsContainer'
 
 // get testing tools
 import renderer from 'react-test-renderer'
 import { shallow, mount } from 'enzyme'
 import * as firebaseService from '../firebaseService'
-import { exec } from 'child_process'
 
 jest.mock('../firebaseService', () => {
   return {
     listenForUpdates: jest.fn(),
     pushToDatabase: jest.fn(),
   }
+})
+
+// the "edges" of friends container
+jest.mock('../components/friend', () => {
+  return () => <div>Friend</div>
 })
 
 const SNAPSHOT_FROM_FIREBASE = {
@@ -33,7 +37,7 @@ HAPPY PATH:
   component renders as we expect
 */
 it('renders the happy path', () => {
-  const component = renderer.create(<ExerciseContainer />)
+  const component = renderer.create(<FriendsContainer />)
   let tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
@@ -44,28 +48,28 @@ BEHAVIOR:
     1. submitting forms
     2. loading data
 */
-it('sets state with initial list of exercises', done => {
+it('sets state with initial list of friends', done => {
   // NOTE: mock needs to match the behavior of the original
-  // listenForUpdates('exercises', this.buildExerciseList) -> must pass a fake snapshot into cb
+  // listenForUpdates('friends', this.buildExerciseList) -> must pass a fake snapshot into cb
   firebaseService.listenForUpdates.mockImplementation((_, cb) =>
     cb(SNAPSHOT_FROM_FIREBASE),
   )
-  const wrapper = mount(<ExerciseContainer />)
+  const wrapper = mount(<FriendsContainer />)
   wrapper.update()
   setImmediate(() => {
-    const exercises = wrapper.state('exercises')
-    expect(exercises).toHaveLength(1)
-    expect(exercises[0]).toMatchObject(SNAPSHOT_AS_STATE)
+    const friends = wrapper.state('friends')
+    expect(friends).toHaveLength(1)
+    expect(friends[0]).toMatchObject(SNAPSHOT_AS_STATE)
   })
   done()
 })
-it('sends new exercises to Firebase on form submit', () => {
+it('sends new friends to Firebase on form submit', () => {
   // note: this is not really a unit test, more integration test
   firebaseService.listenForUpdates.mockImplementation((_, cb) =>
     cb(SNAPSHOT_FROM_FIREBASE),
   )
-  const wrapper = mount(<ExerciseContainer />)
-  wrapper.find('.AddFriendForm__submit').simulate('submit')
+  const wrapper = mount(<FriendsContainer />)
+  wrapper.find('.AddFriendForm__Submit').simulate('submit')
   expect(firebaseService.pushToDatabase.mock.calls).toHaveLength(1)
 })
 

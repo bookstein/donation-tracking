@@ -1,24 +1,24 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from '../App'
-import Exercise from '../components/exercise'
+import Friend from '../components/Friend'
 
 // get testing tools
 import renderer from 'react-test-renderer'
 import { shallow, mount } from 'enzyme'
 import { removeFromDatabase } from '../firebaseService'
 
-const removeExercise = jest.fn()
+const removeFriend = jest.fn()
 const PROPS = {
   removalKey: 'testKey',
-  exerciseTag: 'testTag',
-  exerciseName: 'testName',
-  removeExercise,
+  friendTag: 'testTag',
+  friendName: 'testName',
+  removeFriend,
 }
 
 // happy path: component renders (jest snapshot)
 it('renders without crashing', () => {
-  const component = renderer.create(<Exercise {...PROPS} />)
+  const component = renderer.create(<Friend {...PROPS} />)
   let tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
@@ -26,7 +26,7 @@ it('renders without crashing', () => {
 // simulate user behavior
 // click X
 it('calls the `remove` callback on click', () => {
-  const component = shallow(<Exercise {...PROPS} />)
-  component.find('.Exercise__X').simulate('click')
-  expect(removeExercise).toHaveBeenCalled()
+  const component = shallow(<Friend {...PROPS} />)
+  component.find('.Friend__X').simulate('click')
+  expect(removeFriend).toHaveBeenCalled()
 })

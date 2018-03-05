@@ -10,9 +10,9 @@ class Friend extends Component {
     removeFriend: PropTypes.func.isRequired,
   }
 
-  handleRemoveExercise = () => {
+  handleRemoveFriend = () => {
     const k = this.props.removalKey
-    this.props.removeExercise(k)
+    this.props.removeFriend(k)
   }
 
   render() {

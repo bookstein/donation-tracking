@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div
+  className="Friend"
+>
+  <div>
+    <h1>
+      testName
+    </h1>
+    <p
+      className="Friend__Tags"
+    >
+      Tags:
+      <span
+        className="Friend__Tag"
+      >
+        testTag
+      </span>
+    </p>
+    <div
+      className="Friend__Completions"
+    >
+      <h3>
+        About 
+        testName
+        :
+      </h3>
+      <p>
+        <label>
+          Made a pledge?
+        </label>
+        <input
+          type="checkbox"
+        />
+      </p>
+      <p>
+        <label>
+          Amount pledged:
+        </label>
+        <input
+          placeholder=""
+          type="text"
+        />
+      </p>
+    </div>
+  </div>
+  <div
+    className="Friend__X"
+    onClick={[Function]}
+  >
+    X
+  </div>
+</div>
+`;
