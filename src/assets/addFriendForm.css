@@ -15,6 +15,7 @@
   margin-bottom: 10px;
   height: 15px;
   flex-grow: 1;
+  background-color: white !important;
 }
 
 .AddFriendForm__Input[name='friendName'] {
