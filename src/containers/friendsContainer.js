@@ -14,6 +14,7 @@ class FriendsContainer extends Component {
     super(props)
     this.state = {
       friends: [],
+      tags: [],
       error: false,
     }
   }
@@ -30,8 +31,11 @@ class FriendsContainer extends Component {
       this.setState({ friends })
     } else {
       // otherwise, add new child
-      const exercise = { text: snapshot.val(), id: snapshot.key }
-      this.setState({ friends: [exercise].concat(this.state.friends) })
+      const friend = { text: snapshot.val(), id: snapshot.key }
+      const tag = friend.text.friendTag
+      const friends = [friend].concat(this.state.friends)
+      const tags = [tag].concat(this.state.tags).filter(t => t.length > 0)
+      this.setState({ friends, tags })
     }
   }
 
@@ -48,7 +52,7 @@ class FriendsContainer extends Component {
   }
 
   render() {
-    const friends = this.state.friends
+    const { friends, tags } = this.state
     return (
       <div className="FriendsContainer">
         <div className="LeftColumn">
@@ -58,7 +62,7 @@ class FriendsContainer extends Component {
             width="214"
             height="270"
           />
-          <AddFriendForm submitFriend={this.submitFriend} />
+          <AddFriendForm tags={tags} submitFriend={this.submitFriend} />
         </div>
         <div className="RightColumn">
           <h2>Ask Friends to Donate</h2>

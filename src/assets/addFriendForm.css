@@ -1,21 +1,33 @@
 .AddFriendForm {
   border: 1px solid #555555;
   background-color: #d2d2d2;
-  padding: 10px;
+  padding: 10px 20px;
+  margin: 10px;
 }
 
 .AddFriendForm__FormGroup {
+  margin-bottom: 10px;
   display: flex;
-  margin: 10px;
 }
 
 .AddFriendForm__Input {
   margin-left: 10px;
+  margin-bottom: 10px;
   height: 15px;
+  flex-grow: 1;
 }
 
 .AddFriendForm__Input[name='friendName'] {
   width: 210px;
+}
+
+.AddFriendForm__PreviousTags {
+  padding-top: 5px;
+  margin-top: 25px;
+  border-top: 1px solid #555555;
+}
+.AddFriendForm__PreviousTags ul {
+  margin: 15px 0;
 }
 
 .AddFriendForm__Submit {
