@@ -3,7 +3,7 @@
 App for tracking fundraising in my community for cool social justice shit.
 
 * Project Console: https://console.firebase.google.com/u/0/project/sjf-donation-tracking/overview
-* Hosting URL:
+* Hosting URL: https://sjf-donation-tracking.firebaseapp.com
 
 ## Development
 1. clone the repo
