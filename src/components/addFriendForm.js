@@ -63,7 +63,9 @@ export default class AddFriendForm extends Component {
         </form>
         <div className="AddFriendForm__PreviousTags">
           <h4>Previous tags:</h4>
-          <ul>{this.props.tags.map(tag => <li>{tag}</li>)}</ul>
+          <ul>
+            {this.props.tags.map((tag, i) => <li key={`${tag}${i}`}>{tag}</li>)}
+          </ul>
         </div>
       </div>
     )
