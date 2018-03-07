@@ -14,6 +14,7 @@ export default class AddFriendForm extends Component {
   }
   static propTypes = {
     submitFriend: PropTypes.func.isRequired,
+    tags: PropTypes.array,
   }
 
   submitChange = e => {
@@ -49,7 +50,7 @@ export default class AddFriendForm extends Component {
             />
           </div>
           <div className="AddFriendForm__FormGroup">
-            <label>Passionate about:</label>
+            <label>They're passionate about:</label>
             <input
               type="text"
               value={this.state.friendTag}
@@ -60,6 +61,12 @@ export default class AddFriendForm extends Component {
           </div>
           <input className="AddFriendForm__Submit" type="submit" />
         </form>
+        <div className="AddFriendForm__PreviousTags">
+          <h4>Previous tags:</h4>
+          <ul>
+            {this.props.tags.map((tag, i) => <li key={`${tag}${i}`}>{tag}</li>)}
+          </ul>
+        </div>
       </div>
     )
   }

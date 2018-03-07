@@ -23,13 +23,13 @@ jest.mock('../components/friend', () => {
 const SNAPSHOT_FROM_FIREBASE = {
   key: 'snapshotKey',
   val: () => ({
-    exerciseName: 'myCoolExercise',
-    exerciseTag: 'legs',
+    friendName: 'me',
+    friendTag: 'social justice',
   }),
 }
 const SNAPSHOT_AS_STATE = {
   id: 'snapshotKey',
-  text: { exerciseName: 'myCoolExercise', exerciseTag: 'legs' },
+  text: { friendName: 'me', friendTag: 'social justice' },
 }
 
 describe('FriendsContainer', () => {

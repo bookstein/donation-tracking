@@ -40,7 +40,7 @@ exports[`FriendsContainer renders the happy path 1`] = `
           className="AddFriendForm__FormGroup"
         >
           <label>
-            Passionate about:
+            They're passionate about:
           </label>
           <input
             className="AddFriendForm__Input"
@@ -55,6 +55,18 @@ exports[`FriendsContainer renders the happy path 1`] = `
           type="submit"
         />
       </form>
+      <div
+        className="AddFriendForm__PreviousTags"
+      >
+        <h4>
+          Previous tags:
+        </h4>
+        <ul>
+          <li>
+            social justice
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <div
