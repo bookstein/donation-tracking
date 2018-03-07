@@ -2,8 +2,8 @@
 
 App for tracking fundraising in my community for cool social justice shit.
 
-* Project Console: https://console.firebase.google.com/project/workout-ddb81/overview
-* Hosting URL: https://workout-ddb81.firebaseapp.com
+* Project Console: https://console.firebase.google.com/u/0/project/sjf-donation-tracking/overview
+* Hosting URL:
 
 ## Development
 1. clone the repo
