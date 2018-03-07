@@ -19,18 +19,17 @@ exports[`renders without crashing 1`] = `
       </span>
     </p>
     <div
-      className="Friend__Completions"
+      className="Friend__Info"
     >
-      <h3>
-        About 
-        testName
-        :
-      </h3>
+      <h4>
+        Donations:
+      </h4>
       <p>
         <label>
-          Made a pledge?
+          Pledged to donate?
         </label>
         <input
+          className="Friend__formField"
           type="checkbox"
         />
       </p>
@@ -38,7 +37,11 @@ exports[`renders without crashing 1`] = `
         <label>
           Amount pledged:
         </label>
+        <span>
+          $
+        </span>
         <input
+          className="Friend__formField"
           placeholder=""
           type="text"
         />

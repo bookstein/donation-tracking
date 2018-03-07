@@ -7,6 +7,15 @@
   justify-content: space-between;
 }
 
+.Friend label {
+  margin-right: 10px;
+}
+
+.Friend__formField {
+  height: 15px;
+  margin-left: 3px;
+}
+
 .Friend__Tags {
   font-size: 13px;
   font-style: italic;

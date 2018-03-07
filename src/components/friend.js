@@ -25,15 +25,16 @@ class Friend extends Component {
             Tags:
             <span className="Friend__Tag">{friendTag}</span>
           </p>
-          <div className="Friend__Completions">
-            <h3>About {friendName}:</h3>
+          <div className="Friend__Info">
+            <h4>Donations:</h4>
             <p>
-              <label>Made a pledge?</label>
-              <input type="checkbox" />
+              <label>Pledged to donate?</label>
+              <input className="Friend__formField" type="checkbox" />
             </p>
             <p>
               <label>Amount pledged:</label>
-              <input type="text" placeholder="" />
+              <span>$</span>
+              <input className="Friend__formField" type="text" placeholder="" />
             </p>
           </div>
         </div>
