@@ -5,6 +5,7 @@
   margin: 20px 0;
   display: flex;
   justify-content: space-between;
+  font-size: 20px;
 }
 
 .Friend label {
@@ -17,12 +18,12 @@
 }
 
 .Friend__Tags {
-  font-size: 13px;
+  font-size: 20px;
   font-style: italic;
 }
 
 .Friend__Tag {
-  padding-left: 5px;
+  padding-left: 10px;
   text-decoration: underline;
   color: blue;
 }

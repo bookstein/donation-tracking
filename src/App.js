@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import FriendsContainer from './containers/friendsContainer'
+import FriendsList from './containers/friendsList'
 
 class App extends Component {
   render() {
-    return <FriendsContainer />
+    return <FriendsList />
   }
 }
 

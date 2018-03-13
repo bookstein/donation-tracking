@@ -1,9 +1,7 @@
-# Fundraise Time
+# Donation Tracking
 
-App for tracking fundraising in my community for cool social justice shit.
+An app for tracking fundraising in my community for [Social Justice Fund NW](http://socialjusticefund.org).
 
-* Project Console: https://console.firebase.google.com/u/0/project/sjf-donation-tracking/overview
-* Hosting URL: https://sjf-donation-tracking.firebaseapp.com
 
 ## Development
 1. clone the repo
@@ -11,6 +9,8 @@ App for tracking fundraising in my community for cool social justice shit.
 1. `yarn`
 1. `npm start` opens localhost:3000 in the browser
 
+* Project Console: https://console.firebase.google.com/u/0/project/sjf-donation-tracking/overview
+* Hosting URL: https://sjf-donation-tracking.firebaseapp.com
 
 ## Deployment
 
