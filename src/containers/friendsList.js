@@ -9,7 +9,7 @@ import {
 import logo from '../assets/sjf.png'
 import AddFriendForm from '../components/addFriendForm'
 
-class FriendsContainer extends Component {
+class FriendsList extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -54,7 +54,7 @@ class FriendsContainer extends Component {
   render() {
     const { friends, tags } = this.state
     return (
-      <div className="FriendsContainer">
+      <div className="FriendsList">
         <div className="LeftColumn">
           <img
             src={logo}
@@ -67,7 +67,7 @@ class FriendsContainer extends Component {
         <div className="RightColumn">
           <h2>Ask Friends to Donate</h2>
           {this.state.error && (
-            <div className="FriendsContainer--error">
+            <div className="FriendsList--error">
               An error occurred. Please try again.
             </div>
           )}
@@ -91,4 +91,4 @@ class FriendsContainer extends Component {
   }
 }
 
-export default FriendsContainer
+export default FriendsList

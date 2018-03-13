@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from '../App'
-import FriendsContainer from '../containers/friendsContainer'
+import FriendsList from '../containers/friendsList'
 
 // get testing tools
 import renderer from 'react-test-renderer'
@@ -32,7 +32,7 @@ const SNAPSHOT_AS_STATE = {
   text: { friendName: 'me', friendTag: 'social justice' },
 }
 
-describe('FriendsContainer', () => {
+describe('FriendsList', () => {
   beforeEach(() => {
     // FIXME: mock needs to match the behavior of the original
     // listenForUpdates('friends', this.buildExerciseList) -> must pass a fake snapshot into cb
@@ -52,7 +52,7 @@ HAPPY PATH:
   component renders as we expect
 */
   it('renders the happy path', () => {
-    const component = renderer.create(<FriendsContainer />)
+    const component = renderer.create(<FriendsList />)
     let tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
@@ -64,7 +64,7 @@ BEHAVIOR:
     2. loading data
 */
   it('sets state with initial list of friends', done => {
-    const wrapper = mount(<FriendsContainer />)
+    const wrapper = mount(<FriendsList />)
     wrapper.update()
     setImmediate(() => {
       const friends = wrapper.state('friends')
@@ -73,9 +73,9 @@ BEHAVIOR:
     })
     done()
   })
+  // note: this is not really a unit test, more integration test
   it('sends new friends to Firebase on form submit', () => {
-    // note: this is not really a unit test, more integration test
-    const wrapper = mount(<FriendsContainer />)
+    const wrapper = mount(<FriendsList />)
     wrapper.find('.AddFriendForm__Submit').simulate('submit')
     expect(firebaseService.pushToDatabase.mock.calls).toHaveLength(1)
   })
@@ -91,7 +91,7 @@ EDGE CASES
     firebaseService.pushToDatabase.mockImplementationOnce(() =>
       Promise.reject('you got an error!'),
     )
-    const wrapper = mount(<FriendsContainer />)
+    const wrapper = mount(<FriendsList />)
     wrapper.find('.AddFriendForm__Submit').simulate('submit')
     wrapper.update()
     setImmediate(() => {

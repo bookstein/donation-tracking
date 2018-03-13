@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FriendsContainer renders the happy path 1`] = `
+exports[`FriendsList renders the happy path 1`] = `
 <div
-  className="FriendsContainer"
+  className="FriendsList"
 >
   <div
     className="LeftColumn"
